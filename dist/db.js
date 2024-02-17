@@ -14,11 +14,9 @@ require("dotenv").config();
 const sequelize_1 = require("sequelize");
 Object.defineProperty(exports, "Sequelize", { enumerable: true, get: function () { return sequelize_1.Sequelize; } });
 Object.defineProperty(exports, "DataTypes", { enumerable: true, get: function () { return sequelize_1.DataTypes; } });
-// const MYSQL_URL = process.env.DATABASE_URL as unknown as string;
-// const sequelize = new Sequelize(MYSQL_URL);
-const sequelize = new sequelize_1.Sequelize('node_sequelize', 'root', 'success123456', {
+const sequelize = new sequelize_1.Sequelize(process.env.MYSQL_DB, process.env.MYSQL_USER, process.env.MYSQL_PASSWORD, {
     dialect: 'mysql',
-    host: "127.0.0.1",
+    host: process.env.MYSQL_HOST,
 });
 exports.sequelize = sequelize;
 function connectDB() {

@@ -1,13 +1,12 @@
 require("dotenv").config();
 import { Sequelize, DataTypes } from "sequelize";
 
-// const MYSQL_URL = process.env.DATABASE_URL as unknown as string;
-// const sequelize = new Sequelize(MYSQL_URL);
 
 
-const sequelize = new Sequelize('node_sequelize', 'root', 'success123456', {
+
+const sequelize = new Sequelize(process.env.MYSQL_DB as string, process.env.MYSQL_USER as string, process.env.MYSQL_PASSWORD as string, {
   dialect : 'mysql',
-  host: "127.0.0.1",
+  host: process.env.MYSQL_HOST,
 });
 
 async function connectDB() {
